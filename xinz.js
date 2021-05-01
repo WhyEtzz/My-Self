@@ -81,7 +81,7 @@ prefix = '∆'
 public = false
 waktu = '-'
 alasan = '-'
-
+xteam = 'Masukkan Apikeymu'
 ichh.on('message-new', async(ich) => {
     try {
         if (!ich.message) return
@@ -223,7 +223,7 @@ No prefix
 				break
 	case 'play':
 					
-						dataa = await fetch(`https://api.xteam.xyz/dl/play?lagu=${body.slice(6)}&APIKEY=d682fc863988869d`, {method: 'get'})
+						dataa = await fetch(`https://api.xteam.xyz/dl/play?lagu=${body.slice(6)}&APIKEY=${xteam}`, {method: 'get'})
             data = dataa.json()
 						teks = '-「 *Play Music From Youtubes* 」-\n'
 						
@@ -232,11 +232,11 @@ No prefix
 						ichi.sendFakeToko(from, mess.wait, teks)
 						ichh.sendMessage(from, thumb, image, {quoted: ich, caption: teks})
 						buffer = await getBuffer(data.url)
-						ichh.sendMessage(from, buffer, MessageType.audio, {mimetype: 'audio/mp3', filename: `${data.judul}.mp3`, quoted: ich, ptt: true})
+						ichh.sendMessage(from, buffer, MessageType.audio, {mimetype: 'audio/mp4', filename: `${data.judul}.mp3`, quoted: ich, ptt: true})
 						break 
 			case 'public':
 				public = true
-				ichi.sendFakeStatus(from, `Succ`, fake)
+				ichi.sendFakeStatus(from, `Sukses`, fake)
 				break
 			case 'exif':
 				if (args.length < 1) return ichi.reply(from, `Penggunaan ${prefix}exif nama|author`, ich)
